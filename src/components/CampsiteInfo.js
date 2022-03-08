@@ -8,7 +8,7 @@ class CampsiteInfo extends Component {
         <div className="col-md-5 m-1">
           <h4>Comments</h4>
           {comments.map((comment) => (
-            <div key={comment.id}>
+            <div key={comment.id} className="mb-1">
               {comment.text}
               <br></br>
               {"--"}
@@ -43,14 +43,15 @@ class CampsiteInfo extends Component {
   render() {
     if (this.props.campsite) {
       return (
-        <div className="row">
-          {this.renderCampsite(this.props.campsite)}
-          {this.renderComments(this.props.campsite.comments)}
+        <div className="container">
+          <div className="row">
+            {this.renderCampsite(this.props.campsite)}
+            {this.renderComments(this.props.campsite.comments)}
+          </div>
         </div>
       );
-    } else {
-      return <div />;
     }
+    return <div />;
   }
 }
 export default CampsiteInfo;
