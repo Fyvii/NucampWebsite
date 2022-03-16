@@ -11,6 +11,7 @@ import { COMMENTS } from "../shared/comments";
 import Home from "./HomeComponent";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Contact from "./ContactComponent";
+import About from "./AboutComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -43,12 +44,18 @@ class Main extends Component {
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
+          <Route
+            exact
+            path="/aboutus"
+            render={() => <About partners={this.state.partners} />}
+          />
           <Route exact path="/contactus" component={Contact} />
           <Route
             exact
             path="/directory"
             render={() => <Directory campsites={this.state.campsites} />}
           />
+
           <Route path="/directory/:campsiteId" component={CampsiteWithId} />
           <Redirect to="/home" />
         </Switch>
@@ -57,6 +64,7 @@ class Main extends Component {
     );
   }
 }
+export default Main;
 
 const CampsiteWithId = ({ match }) => {
   return (
@@ -72,5 +80,3 @@ const CampsiteWithId = ({ match }) => {
     />
   );
 };
-
-export default Main;
