@@ -264,7 +264,7 @@ class Contact extends Component {
             </Form>
           </div>
         </div>
-        ); }
+        );
       </div>
     );
   }
