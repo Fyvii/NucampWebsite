@@ -9,6 +9,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { CommentForm } from "./ContactComponent";
 
 function RenderCampsite({ campsite }) {
   return (
@@ -41,10 +42,16 @@ function RenderComments({ comments }) {
             }).format(new Date(Date.parse(comment.date)))}
           </div>
         ))}
+        <CommentForm />
       </div>
     );
+    <div />;
   } else {
-    return <div />;
+    return (
+      <div>
+        <CommentForm />
+      </div>
+    );
   }
 }
 

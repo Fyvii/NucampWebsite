@@ -21,7 +21,7 @@ export class CommentForm extends Component {
   render() {
     return (
       <div>
-        <Button>
+        <Button outline>
           <i className="fa fa-lg fa-pencil" /> Submit Comment
         </Button>
       </div>
