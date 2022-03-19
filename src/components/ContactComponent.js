@@ -17,6 +17,18 @@ const isNumber = (val) => !isNaN(+val);
 const validEmail = (val) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
+export class CommentForm extends Component {
+  render() {
+    return (
+      <div>
+        <Button>
+          <i className="fa fa-lg fa-pencil" /> Submit Comment
+        </Button>
+      </div>
+    );
+  }
+}
+
 class Contact extends Component {
   constructor(props) {
     super(props);
@@ -257,7 +269,6 @@ class Contact extends Component {
             </LocalForm>
           </div>
         </div>
-        );
       </div>
     );
   }
