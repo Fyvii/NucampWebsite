@@ -6,9 +6,16 @@ import {
   Label,
   Col,
   Row,
+  Form,
+  FormGroup,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
+///Week 4 Material
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -18,12 +25,49 @@ const validEmail = (val) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 export class CommentForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isModalOpen: false,
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+    });
+  }
+
   render() {
     return (
       <div>
-        <Button outline>
+        <Button outline onClick={this.toggleModal}>
           <i className="fa fa-lg fa-pencil" /> Submit Comment
         </Button>
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+          <ModalBody>
+            <LocalForm onSubmit={this.handleLogin}>
+              <FormGroup>
+                <Label htmlFor="rating">Rating</Label>
+                <Input />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="name">Your Name</Label>
+                <Input />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="comment">Comment</Label>
+                <Input />
+              </FormGroup>
+              <Button type="submit" value="submit" color="primary">
+                Submit
+              </Button>
+            </LocalForm>
+          </ModalBody>
+        </Modal>
       </div>
     );
   }
