@@ -32,12 +32,18 @@ export class CommentForm extends Component {
       isModalOpen: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
+  }
+
+  handleLogin(values) {
+    console.log("Current state is: " + JSON.stringify(values));
+    alert("Current state is: " + JSON.stringify(values));
   }
 
   render() {
@@ -49,7 +55,7 @@ export class CommentForm extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={this.handleLogin}>
+            <LocalForm onSubmit={(values) => this.handleLogin(values)}>
               <FormGroup>
                 <Label htmlFor="rating">Rating</Label>
                 <Control.select
@@ -57,6 +63,7 @@ export class CommentForm extends Component {
                   id="rating"
                   name="rating"
                   className="form-control"
+                  innerRef={(input) => (this.rating = input)}
                 >
                   <option>1</option>
                   <option>2</option>
@@ -73,6 +80,7 @@ export class CommentForm extends Component {
                   name="author"
                   placeholder="Your Name"
                   className="form-control"
+                  innerRef={(input) => (this.author = input)}
                 />
               </FormGroup>
               <FormGroup>
@@ -83,6 +91,7 @@ export class CommentForm extends Component {
                   name="text"
                   rows="6"
                   className="form-control"
+                  innerRef={(input) => (this.text = input)}
                 />
               </FormGroup>
               <Button type="submit" value="submit" color="primary">
