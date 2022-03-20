@@ -52,15 +52,32 @@ export class CommentForm extends Component {
             <LocalForm onSubmit={this.handleLogin}>
               <FormGroup>
                 <Label htmlFor="rating">Rating</Label>
-                <Input />
+                <Control.select
+                  model=".rating"
+                  id="rating"
+                  name="rating"
+                  className="form-control"
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Control.select>
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="name">Your Name</Label>
-                <Input />
+                <Label htmlFor="author">Your Name</Label>
+                <Control.textarea
+                  model=".author"
+                  id="author"
+                  name="author"
+                  rows="6"
+                  className="form-control"
+                />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="comment">Comment</Label>
-                <Input />
+                <Label htmlFor="text">Comment</Label>
+                <Control model=".text" id="text" name="text" />
               </FormGroup>
               <Button type="submit" value="submit" color="primary">
                 Submit
