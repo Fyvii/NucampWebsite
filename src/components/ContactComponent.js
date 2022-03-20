@@ -67,17 +67,23 @@ export class CommentForm extends Component {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="author">Your Name</Label>
-                <Control.textarea
+                <Control.text
                   model=".author"
                   id="author"
                   name="author"
-                  rows="6"
+                  placeholder="Your Name"
                   className="form-control"
                 />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="text">Comment</Label>
-                <Control model=".text" id="text" name="text" />
+                <Control.textarea
+                  model=".text"
+                  id="text"
+                  name="text"
+                  rows="6"
+                  className="form-control"
+                />
               </FormGroup>
               <Button type="submit" value="submit" color="primary">
                 Submit
