@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { addComment, fetchCampsites } from "../redux/ActionCreator";
+import { actions } from "react-redux-form";
 
 const mapStateToProps = (state) => {
   return {
@@ -22,6 +23,7 @@ const mapDispatchtoProps = {
   addComment: (campsiteId, rating, author, text) =>
     addComment(campsiteId, rating, author, text),
   fetchCampsites: () => fetchCampsites(),
+  resetFeedbackForm: () => actions.reset("feedbackForm"),
 };
 class Main extends Component {
   componentDidMount() {
@@ -74,7 +76,14 @@ class Main extends Component {
             path="/aboutus"
             render={() => <About partners={this.props.partners} />}
           />
-          <Route exact path="/contactus" component={Contact} />
+          <Route
+            exact
+            path="/contactus"
+            render={() => (
+              <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+            )}
+            component={Contact}
+          />
           <Route
             exact
             path="/directory"
